@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "iostream"
+#include <ctime>
 
 const int ARGUMENTS_COUNT = 3;
 const int RADIUS = 1;
@@ -43,12 +44,16 @@ double GetPiValue(int iterations)
 
 int main(int argc, char* argv[])
 {
+	clock_t start = clock();
 	if (!ValidateInput(argc))
 	{
 		return 1;
 	}
 	int iterations = atoi(argv[1]);
-	cout << GetPiValue(iterations) << endl;
+	double pi = GetPiValue(iterations);
+	clock_t end = clock();
+	double seconds = (double)(end - start) / CLOCKS_PER_SEC;
+	cout << "Pi: " << pi << endl << "Time: " << seconds << endl;
 	return 0;
 }
 
