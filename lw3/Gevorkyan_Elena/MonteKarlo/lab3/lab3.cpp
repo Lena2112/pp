@@ -24,7 +24,7 @@ int GetIncomingPoints(int iterations)
 	double y = 0;
 	int minX = -RADIUS;
 	int maxX = RADIUS;
-
+#pragma omp parallel for
 	for (int i = 0; i < iterations; i++)
 	{
 		x = (double)rand() / (double)RAND_MAX * (maxX - minX) + minX;
